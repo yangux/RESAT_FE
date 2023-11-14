@@ -6,8 +6,20 @@ span {
 
 input {
   border: none;
+  border-bottom: 1px solid #ddd;
   width: 70px;
+  border-radius: 5px;
   text-align: center;
+}
+
+input::placeholder {
+  color: #ddd;
+}
+
+input:disabled {
+  background-color: transparent;
+  border: none;
+  color: #000;
 }
 
 button {
@@ -36,7 +48,7 @@ button:hover {
 
 .container #timeView {
   width: 100%;
-  margin: 10px auto;
+  margin-bottom: 20px;
   text-align: center;
 }
 

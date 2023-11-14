@@ -20,6 +20,10 @@ inputList.forEach((input) =>
 );
 
 function setTimer() {
+  inputList.forEach((input) => {
+    input.disabled = true;
+  });
+
   if (second > 0) {
     second--;
   } else {
@@ -33,6 +37,9 @@ function setTimer() {
         second = 59;
       } else {
         clearInterval(timer);
+        inputList.forEach((input) => {
+          input.disabled = false;
+        });
       }
     }
   }
@@ -62,7 +69,7 @@ resetBtn.addEventListener("click", () => {
   minute = 0;
   second = 0;
 
-  showTime(hour, inputHour);
-  showTime(minute, inputMinute);
-  showTime(second, inputSecond);
+  showTime("", inputHour);
+  showTime("", inputMinute);
+  showTime("", inputSecond);
 });
