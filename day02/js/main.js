@@ -1,14 +1,15 @@
-const input = document.querySelector("#todoInput");
+const todoInput = document.querySelector("#todoInput");
 const categoryRadioBtns = document.querySelectorAll('input[name="category"]');
 const todoRadioBtns = document.querySelectorAll('input[name="todo"]');
 const submitBtn = document.querySelector("#submitBtn");
 const todoList = document.querySelector("#todoList");
+const todoLines = todoList.children;
 let todoRadioChecked;
 
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
-  const todo = input.value;
+  const todo = todoInput.value;
 
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
@@ -16,21 +17,49 @@ submitBtn.addEventListener("click", (e) => {
   checkbox.value = todo;
 
   const li = document.createElement("li");
-  li.append(checkbox, `${checkbox.value} [${todoRadioChecked}]`);
-  todoList.append(li);
-  input.value = "";
+  const todoTitle = document.createElement("span");
+  const todoImportance = document.createElement("span");
 
-  console.log(todoRadioChecked);
+  todoTitle.innerHTML = todo;
+  todoImportance.innerHTML = ` [${todoRadioChecked.value}]`;
+
+  li.append(checkbox, todoTitle, todoImportance);
+  todoList.append(li);
+
+  checkbox.addEventListener("change", function () {
+    li.classList.toggle("done");
+  });
+
+  todoInput.value = "";
 });
 
 todoRadioBtns.forEach((btn) => {
   btn.addEventListener("click", function () {
-    todoRadioChecked = this.value;
+    todoRadioChecked = this;
   });
 });
 
 categoryRadioBtns.forEach((btn) => {
   btn.addEventListener("click", function () {
-    console.log(this.value);
+    switch (this.value) {
+      case "완료":
+        Array.from(todoLines).forEach((li) => {
+          if (li.classList.contains("done")) {
+            li.classList.remove("hide");
+          } else li.classList.add("hide");
+        });
+        break;
+      case "미완료":
+        Array.from(todoLines).forEach((li) => {
+          if (li.classList.contains("done")) {
+            li.classList.add("hide");
+          } else li.classList.remove("hide");
+        });
+        break;
+      default:
+        Array.from(todoLines).forEach((li) => {
+          li.classList.remove("hide");
+        });
+    }
   });
 });
