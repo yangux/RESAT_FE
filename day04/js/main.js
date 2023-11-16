@@ -1,11 +1,11 @@
-const year = new Date().getFullYear();
-const month = new Date().getMonth() + 1;
+let year = new Date().getFullYear();
+let month = new Date().getMonth() + 1;
 
 const displayDate = document.querySelector("#displayDate");
 const displayDateSpan = displayDate.querySelector("span");
+const prevBtn = displayDate.querySelector(".prevBtn");
+const nextBtn = displayDate.querySelector(".nextBtn");
 const calendar = document.querySelector("#calendar");
-
-displayDateSpan.innerHTML = `${year}년 ${month}월`;
 
 function generateCalendar(year, month) {
   const firstDay = new Date(year, month - 1, 1);
@@ -31,4 +31,39 @@ function generateCalendar(year, month) {
   }
 }
 
-generateCalendar(year, month);
+function clearCalendar() {
+  const tableRows = calendar.querySelectorAll("tr");
+  tableRows.forEach((row) => {
+    if (!row.classList.contains("thead")) {
+      row.remove();
+    }
+  });
+}
+
+prevBtn.addEventListener("click", function () {
+  month--;
+
+  if (month < 1) {
+    month = 12;
+    year--;
+  }
+  clearCalendar();
+  init();
+});
+
+nextBtn.addEventListener("click", function () {
+  month++;
+
+  if (month > 12) {
+    month = 1;
+    year++;
+  }
+  clearCalendar();
+  init();
+});
+
+function init() {
+  generateCalendar(year, month);
+  displayDateSpan.innerHTML = `${year}년 ${month}월`;
+}
+init();
