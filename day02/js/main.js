@@ -72,4 +72,8 @@ resetBtn.addEventListener("click", () => {
   showTime("", inputHour);
   showTime("", inputMinute);
   showTime("", inputSecond);
+
+  inputList.forEach((input) => {
+    input.disabled = false;
+  });
 });
