@@ -1,65 +1,75 @@
-const todoInput = document.querySelector("#todoInput");
-const categoryRadioBtns = document.querySelectorAll('input[name="category"]');
-const todoRadioBtns = document.querySelectorAll('input[name="todo"]');
-const submitBtn = document.querySelector("#submitBtn");
-const todoList = document.querySelector("#todoList");
-const todoLines = todoList.children;
-let todoRadioChecked;
+import { getCurrentValue, showTime } from "./funcs.js";
 
-submitBtn.addEventListener("click", (e) => {
-  e.preventDefault();
+const inputList = document.querySelectorAll("#timeView input");
 
-  const todo = todoInput.value;
+const inputHour = document.querySelector("#hour");
+const inputMinute = document.querySelector("#minute");
+const inputSecond = document.querySelector("#second");
 
-  const checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.name = "listed";
-  checkbox.value = todo;
+const startBtn = document.querySelector("#startBtn");
+const stopBtn = document.querySelector("#stopBtn");
+const resetBtn = document.querySelector("#resetBtn");
 
-  const li = document.createElement("li");
-  const todoTitle = document.createElement("span");
-  const todoImportance = document.createElement("span");
+let hour, minute, second;
+let timer;
 
-  todoTitle.innerHTML = todo;
-  todoImportance.innerHTML = ` [${todoRadioChecked.value}]`;
+inputList.forEach((input) =>
+  input.addEventListener("click", function () {
+    this.value = "";
+  })
+);
 
-  li.append(checkbox, todoTitle, todoImportance);
-  todoList.append(li);
-
-  checkbox.addEventListener("change", function () {
-    li.classList.toggle("done");
+function setTimer() {
+  inputList.forEach((input) => {
+    input.disabled = true;
   });
 
-  todoInput.value = "";
-});
-
-todoRadioBtns.forEach((btn) => {
-  btn.addEventListener("click", function () {
-    todoRadioChecked = this;
-  });
-});
-
-categoryRadioBtns.forEach((btn) => {
-  btn.addEventListener("click", function () {
-    switch (this.value) {
-      case "완료":
-        Array.from(todoLines).forEach((li) => {
-          if (li.classList.contains("done")) {
-            li.classList.remove("hide");
-          } else li.classList.add("hide");
+  if (second > 0) {
+    second--;
+  } else {
+    if (minute > 0) {
+      minute--;
+      second = 59;
+    } else {
+      if (hour > 0) {
+        hour--;
+        minute = 59;
+        second = 59;
+      } else {
+        clearInterval(timer);
+        inputList.forEach((input) => {
+          input.disabled = false;
         });
-        break;
-      case "미완료":
-        Array.from(todoLines).forEach((li) => {
-          if (li.classList.contains("done")) {
-            li.classList.add("hide");
-          } else li.classList.remove("hide");
-        });
-        break;
-      default:
-        Array.from(todoLines).forEach((li) => {
-          li.classList.remove("hide");
-        });
+      }
     }
-  });
+  }
+  showTime(hour, inputHour);
+  showTime(minute, inputMinute);
+  showTime(second, inputSecond);
+}
+
+startBtn.addEventListener("click", () => {
+  hour = getCurrentValue(inputHour);
+  minute = getCurrentValue(inputMinute);
+  second = getCurrentValue(inputSecond);
+
+  showTime(hour, inputHour);
+  showTime(minute, inputMinute);
+  showTime(second, inputSecond);
+
+  timer = setInterval(setTimer, 1000);
+});
+
+stopBtn.addEventListener("click", () => {
+  clearInterval(timer);
+});
+
+resetBtn.addEventListener("click", () => {
+  hour = 0;
+  minute = 0;
+  second = 0;
+
+  showTime("", inputHour);
+  showTime("", inputMinute);
+  showTime("", inputSecond);
 });

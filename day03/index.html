@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO LIST</title>
+    <link rel="stylesheet" href="main.css">
+    <script defer src="js/main.js"></script>
+</head>
+
+<body>
+    <h1>TO-DO LIST</h1>
+    <form>
+        <div id="category">
+            <input type="radio" name="category" value="전체" id="category-all" checked />
+            <label for="category-all">전체</label>
+            <input type="radio" name="category" value="완료" id="category-complete" />
+            <label for="category-complete">완료</label>
+            <input type="radio" name="category" value="미완료" id="category-yet" />
+            <label for="category-yet">미완료</label>
+        </div>
+        <hr />
+        <input type="text" placeholder="할 일을 작성해주세요." id="todoInput">
+        <input type="radio" name="todo" id="todo-low" value="낮음">
+        <label for="todo-low">낮음</label>
+        <input type="radio" name="todo" id="todo-normal" value="보통">
+        <label for="todo-normal">보통</label>
+        <input type="radio" name="todo" id="todo-high" value="높음">
+        <label for="todo-high">높음</label>
+        <input type="radio" name="todo" id="todo-veryhigh" value="아주 높음">
+        <label for="todo-veryhigh">아주 높음</label>
+
+        <button id="submitBtn">추가</button>
+        <hr />
+    </form>
+    <ul id="todoList"></ul>
+</body>
+
+</html>
