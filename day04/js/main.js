@@ -38,7 +38,16 @@ function generateCalendar(year, month) {
         container.append(textareaContainer);
 
         cell.addEventListener("click", function () {
-          textareaContainer.classList.toggle("hide");
+          const textareaContainers =
+            document.querySelectorAll(".textareaContainer");
+          Array.from(textareaContainers).forEach((textareaContainer) => {
+            textareaContainer.classList.add("hide");
+          });
+
+          let dayCheck = `${year}-${month}-${this.innerText}`;
+          if (dayCheck === textareaContainer.id) {
+            textareaContainer.classList.toggle("hide");
+          }
         });
 
         dayCount++;

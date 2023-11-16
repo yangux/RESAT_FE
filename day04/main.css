@@ -63,16 +63,16 @@ button {
   height: 150px;
   padding: 10px;
 
+  border: 1px solid #89a0ec;
+  background-color: white;
+  border-radius: 5px;
+  color: #2552e7;
+
   position: absolute;
   bottom: -170px;
   left: 0;
   z-index: 10;
   overflow: hidden;
-
-  border: 1px solid #89a0ec;
-  background-color: white;
-  border-radius: 5px;
-  color: #2552e7;
 }
 
 .textareaContainer textarea {
