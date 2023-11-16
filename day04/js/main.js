@@ -1,6 +1,7 @@
 let year = new Date().getFullYear();
 let month = new Date().getMonth() + 1;
 
+const container = document.querySelector(".container");
 const displayDate = document.querySelector("#displayDate");
 const displayDateSpan = displayDate.querySelector("span");
 const prevBtn = displayDate.querySelector(".prevBtn");
@@ -22,6 +23,24 @@ function generateCalendar(year, month) {
         cell.innerHTML = "";
       } else {
         cell.innerHTML = dayCount;
+
+        const textareaContainer = document.createElement("div");
+        const textArea = document.createElement("textarea");
+        const memoDate = document.createElement("span");
+
+        textareaContainer.id = `${year}-${month}-${dayCount}`;
+        textareaContainer.classList.add("textareaContainer");
+        textareaContainer.classList.add("hide");
+
+        memoDate.append(`${year}년 ${month}월 ${dayCount}일`);
+
+        textareaContainer.append(memoDate, textArea);
+        container.append(textareaContainer);
+
+        cell.addEventListener("click", function () {
+          textareaContainer.classList.toggle("hide");
+        });
+
         dayCount++;
       }
 
