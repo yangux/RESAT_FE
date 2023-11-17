@@ -9,6 +9,14 @@
   clip-path: polygon(0 0, 0 0, 0 0);
 }
 
+.ellipsis-line-2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
 /* HEADER */
 header {
   display: flex;
@@ -105,7 +113,6 @@ main .section1.main-banner div a span {
 }
 main .section1.main-banner div a h2 {
   font-size: var(--main-banner-font-size);
-  line-height: var(--title-line-height);
   margin-bottom: var(--title-margin);
 }
 main .section1.main-banner div a h3 {
@@ -116,7 +123,7 @@ main .section1.main-banner div a span {
   align-items: center;
 }
 main .section1.main-banner div a span span {
-  margin-left: var(--text-margin);
+  margin-left: var(--link-margin);
 }
 
 main .section2.intern {
@@ -141,19 +148,46 @@ main .section2.intern > div a span {
 }
 
 main .section2.intern .grid-container {
+  display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: var(--article-margin);
 }
 
-main .section2.intern .grid-container li article {
+main .section2.intern .grid-container li a article {
   border-radius: var(--border-radius-small);
   box-shadow: 0 5px 10px var(--black-opacity);
 }
-main .section2.intern .grid-container li article .img-wrap {
+main .section2.intern .grid-container li a article .img-wrap {
   height: 162px;
+  border-radius: var(--border-radius-small);
+
+  background-image: url("../img/card_intern_1.png");
+  background-size: cover;
+  background-position: center;
 }
 
-main .section2.intern .grid-container li article .desc {
+main .section2.intern .grid-container li a article .desc {
   height: 98px;
+  padding: var(--card-padding);
+}
+main .section2.intern .grid-container li a article .desc .tag {
+  margin-bottom: var(--link-margin);
+}
+main .section2.intern .grid-container li a article .desc .tag .d-day {
+  display: inline-block;
+  background-color: var(--black-50);
+  color: var(--white);
+  padding: 1px 8px;
+  border-radius: var(--border-radius-big);
+  font-size: var(--card-content-font-size);
+  font-weight: bold;
+}
+main .section2.intern .grid-container li a article .desc .tag .category {
+  font-size: var(--card-content-font-size);
+  color: var(--black-40);
+  margin-left: var(--text-margin);
+}
+main .section2.intern .grid-container li a article .desc h4 {
+  font-weight: bold;
 }
