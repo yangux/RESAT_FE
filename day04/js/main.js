@@ -31,6 +31,7 @@ function generateCalendar(year, month) {
         textareaContainer.id = `${year}-${month}-${dayCount}`;
         textareaContainer.classList.add("textareaContainer");
         textareaContainer.classList.add("hide");
+        textArea.placeholder = "메모를 입력할 수 있습니다.";
 
         memoDate.append(`${year}년 ${month}월 ${dayCount}일`);
 

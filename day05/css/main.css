@@ -1,0 +1,63 @@
+@import url(./reset.css);
+
+.hidden-element {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: polygon(0 0, 0 0, 0 0);
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: var(--header-height);
+  border-bottom: 1px solid rgba(0, 56, 68, 0.1);
+}
+header .inner {
+  display: flex;
+
+  width: var(--header-inner);
+  padding: var(--header-padding);
+}
+header .inner #logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: var(--header-logo-padding);
+}
+header .inner #gnb {
+  display: flex;
+  justify-content: space-between;
+
+  flex-grow: 1;
+}
+header .inner li {
+  padding: var(--header-li-padding);
+}
+header .inner a {
+  color: var(--black-30);
+}
+
+header .inner #gnb .gnb_left {
+  display: flex;
+}
+header .inner #gnb .gnb_left li {
+}
+header .inner #gnb .gnb_left li a {
+}
+
+header .inner #gnb .gnb_right {
+  display: flex;
+}
+header .inner #gnb .gnb_right li {
+}
+header .inner #gnb .gnb_right li a {
+}
+header .inner #gnb .gnb_right li.user a {
+  color: var(--main-color);
+}
