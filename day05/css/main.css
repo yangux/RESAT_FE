@@ -17,6 +17,10 @@
   -webkit-box-orient: vertical;
 }
 
+.box-shadow {
+  box-shadow: var(--box-shadow);
+}
+
 /* HEADER */
 header {
   display: flex;
@@ -71,11 +75,33 @@ header .inner #gnb .gnb-right li.user a {
   color: var(--main-color);
 }
 
-/* MAIN - section1 */
+/* MAIN */
 main.inner {
   width: var(--section-inner);
   margin: 40px auto;
 }
+main section {
+  margin: var(--section-margin);
+}
+main section > hgroup h2 {
+  margin-bottom: var(--text-margin);
+}
+main section > hgroup > div {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: var(--article-margin);
+}
+main section > hgroup > div a {
+  display: flex;
+  align-items: center;
+}
+main section > hgroup > div a span {
+  color: var(--main-color);
+  margin-left: var(--text-margin);
+}
+
+/* MAIN - section1 */
 main .section1 {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -127,27 +153,6 @@ main .section1.main-banner div a span span {
 }
 
 /* MAIN - section2 */
-main .section2.intern {
-  margin: var(--section-margin);
-}
-main .section2.intern h2 {
-  margin-bottom: var(--text-margin);
-}
-main .section2.intern > div {
-  display: flex;
-  justify-content: space-between;
-
-  margin-bottom: var(--article-margin);
-}
-main .section2.intern > div a {
-  display: flex;
-  align-items: center;
-}
-main .section2.intern > div a span {
-  color: var(--main-color);
-  margin-left: var(--text-margin);
-}
-
 main .section2.intern .grid-container {
   display: grid;
   grid-template-rows: 1fr 1fr;
@@ -157,7 +162,6 @@ main .section2.intern .grid-container {
 
 main .section2.intern .grid-container li a article {
   border-radius: var(--border-radius-small);
-  box-shadow: 0 5px 10px var(--black-opacity);
 }
 main .section2.intern .grid-container li a article .img-wrap {
   height: 162px;
@@ -169,7 +173,7 @@ main .section2.intern .grid-container li a article .img-wrap {
 
 main .section2.intern .grid-container li a article .desc {
   height: 98px;
-  padding: var(--card-padding);
+  padding: var(--vertical-card-padding);
 }
 main .section2.intern .grid-container li a article .desc .tag {
   margin-bottom: var(--link-margin);
@@ -244,4 +248,54 @@ main .section3.service .desc p {
 main .section3.service .desc h2 {
   font-size: 21px;
   font-weight: bold;
+}
+
+/* MAIN - section4 */
+main .section4 {
+}
+main .section4 .grid-container {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--article-margin);
+}
+main .section4 .grid-container li a article {
+  padding: var(--horizontal-card-padding);
+  display: flex;
+
+  align-items: center;
+}
+main .section4 .grid-container li a article .img-wrap {
+  width: 130px;
+  height: 120px;
+
+  display: flex;
+  align-items: center;
+}
+main .section4 .grid-container li a article .img-wrap img {
+  width: 120px;
+}
+main .section4 .grid-container li a article .desc {
+}
+main .section4 .grid-container li a article .desc .job-tag {
+  font-size: var(--card-content-font-size);
+  color: var(--black-40);
+  margin-bottom: var(--text-margin);
+}
+main .section4 .grid-container li a article .desc .job {
+  font-size: var(--card-title-font-size);
+  font-weight: bold;
+  margin-bottom: var(--text-margin);
+}
+main .section4 .grid-container li a article .desc .corp {
+  font-size: var(--card-content-font-size);
+  font-weight: bold;
+  margin-bottom: 13px;
+}
+main .section4 .grid-container li a article .desc .type-tag {
+  color: var(--main-color);
+  font-size: var(--card-content-font-size);
+  background-color: var(--main-color-opacity);
+  padding: 0 4px;
+  border-radius: var(--border-radius-small);
 }
