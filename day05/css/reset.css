@@ -49,11 +49,13 @@ li {
 
 h1,
 h2,
-h3,
+h3 {
+  line-height: var(--title-line-height);
+}
 h4,
 h5,
 h6 {
-  line-height: var(--title-line-height);
+  line-height: var(--card-title-line-height);
 }
 h2 {
   font-size: 24px;

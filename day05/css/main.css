@@ -162,7 +162,6 @@ main .section2.intern .grid-container li a article .img-wrap {
   height: 162px;
   border-radius: var(--border-radius-small);
 
-  background-image: url("../img/card_intern_1.png");
   background-size: cover;
   background-position: center;
 }
@@ -183,11 +182,12 @@ main .section2.intern .grid-container li a article .desc .tag .d-day {
   font-size: var(--card-content-font-size);
   font-weight: bold;
 }
-main .section2.intern .grid-container li a article .desc .tag .category {
+main .section2.intern .grid-container li a article .desc .tag .job {
   font-size: var(--card-content-font-size);
   color: var(--black-40);
-  margin-left: var(--text-margin);
+  margin-left: var(--link-margin);
 }
 main .section2.intern .grid-container li a article .desc h4 {
   font-weight: bold;
+  margin-top: var(--link-margin);
 }
