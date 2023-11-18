@@ -2,10 +2,11 @@
   /* color */
   --main-color: rgb(23, 161, 255);
   --main-color-opacity: rgb(241, 249, 255);
-  --black-60: rgb(26, 27, 28);
-  --black-50: rgb(56, 64, 64);
-  --black-40: rgb(147, 153, 153);
-  --black-30: rgb(171, 177, 177);
+  --black-70: rgb(26, 27, 28);
+  --black-60: rgb(56, 64, 64);
+  --black-50: rgb(147, 153, 153);
+  --black-40: rgb(171, 177, 177);
+  --black-30: rgb(210, 215, 215);
   --black-20: rgb(240, 243, 243);
   --black-10: rgb(249, 249, 249);
   --black-opacity: rgba(0, 56, 68, 0.1);

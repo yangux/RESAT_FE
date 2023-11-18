@@ -40,11 +40,13 @@ span,
 a,
 dt,
 dd,
-li {
+li,
+address {
   font-family: "Noto Sans", "Noto Sans KR", sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: var(--black-60);
+  font-style: normal;
 }
 
 h1,

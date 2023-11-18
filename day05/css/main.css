@@ -1,5 +1,10 @@
 @import url(./reset.css);
 
+.inner {
+  width: var(--section-inner);
+  margin: 40px auto;
+}
+
 .hidden-element {
   position: absolute;
   width: 1px;
@@ -76,10 +81,6 @@ header .inner #gnb .gnb-right li.user a {
 }
 
 /* MAIN */
-main.inner {
-  width: var(--section-inner);
-  margin: 40px auto;
-}
 main section {
   margin: var(--section-margin);
 }
@@ -180,7 +181,7 @@ main .section2.intern .grid-container li a article .desc .tag {
 }
 main .section2.intern .grid-container li a article .desc .tag .d-day {
   display: inline-block;
-  background-color: var(--black-50);
+  background-color: var(--black-60);
   color: var(--white);
   padding: 1px 8px;
   border-radius: var(--border-radius-big);
@@ -189,7 +190,7 @@ main .section2.intern .grid-container li a article .desc .tag .d-day {
 }
 main .section2.intern .grid-container li a article .desc .tag .job {
   font-size: var(--card-content-font-size);
-  color: var(--black-40);
+  color: var(--black-50);
   margin-left: var(--link-margin);
 }
 main .section2.intern .grid-container li a article .desc h4 {
@@ -261,6 +262,7 @@ main .section4 .grid-container {
 }
 main .section4 .grid-container li a article {
   padding: var(--horizontal-card-padding);
+  border-radius: var(--border-radius-small);
   display: flex;
 
   align-items: center;
@@ -298,4 +300,66 @@ main .section4 .grid-container li a article .desc .type-tag {
   background-color: var(--main-color-opacity);
   padding: 0 4px;
   border-radius: var(--border-radius-small);
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--black-20);
+  padding: var(--footer-padding);
+}
+footer .inner {
+  margin: 0 auto;
+}
+
+footer .inner .site-area {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+footer .inner .site-area .site-menu {
+  display: flex;
+}
+footer .inner .site-area .site-menu li {
+  margin-right: var(--article-margin);
+}
+footer .inner .site-area .site-menu li:last-child {
+  margin-right: 0;
+}
+footer .inner .site-area .site-menu li a {
+}
+footer .inner .service-area {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+footer .inner .service-area .service-menu {
+  width: 100%;
+}
+footer .inner .service-area .service-menu li {
+  display: flex;
+}
+footer .inner .service-area .service-menu li h4 {
+  display: inline-block;
+  width: 80px;
+  font-weight: bold;
+}
+footer .inner .service-area .service-menu li span {
+  font-size: var(--fotter-detail-font-size);
+}
+footer .inner .service-area .service-menu li span a {
+  font-size: var(--fotter-detail-font-size);
+  font-weight: bold;
+}
+footer .inner .address {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--black-30);
+  padding-top: 20px;
+}
+footer .inner .address address {
+  color: var(--black-40);
+  font-size: var(--fotter-detail-font-size);
+}
+footer .inner .address span {
+  color: var(--black-40);
 }
