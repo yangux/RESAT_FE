@@ -71,9 +71,9 @@ header .inner #gnb .gnb-right li.user a {
   color: var(--main-color);
 }
 
-/* MAIN */
+/* MAIN - section1 */
 main.inner {
-  width: var(--main-inner);
+  width: var(--section-inner);
   margin: 40px auto;
 }
 main .section1 {
@@ -126,6 +126,7 @@ main .section1.main-banner div a span span {
   margin-left: var(--link-margin);
 }
 
+/* MAIN - section2 */
 main .section2.intern {
   margin: var(--section-margin);
 }
@@ -190,4 +191,57 @@ main .section2.intern .grid-container li a article .desc .tag .job {
 main .section2.intern .grid-container li a article .desc h4 {
   font-weight: bold;
   margin-top: var(--link-margin);
+}
+
+/* MAIN - section3 */
+main .section3.service {
+  position: relative;
+  padding-top: var(--article-margin);
+
+  display: flex;
+}
+main .section3.service::before {
+  content: "";
+  display: block;
+  height: 230px;
+  background-color: var(--black-10);
+
+  position: absolute;
+  top: 0;
+  left: -9999px;
+  right: -9999px;
+  z-index: -1;
+}
+main .section3.service .service-slider {
+  height: 220px;
+  border-radius: var(--border-radius-big);
+  overflow: hidden;
+}
+main .section3.service .service-slider img {
+  height: 100%;
+}
+main .section3.service .desc {
+  margin-top: var(--article-margin);
+  padding-left: 30px;
+}
+main .section3.service .desc .tag {
+  padding: 8px 22px 9px 30px;
+  margin-left: -30px;
+  background-color: var(--main-color);
+  border-radius: 0 35px 35px 0;
+  color: var(--white);
+  font-size: var(--card-content-font-size);
+  font-weight: bold;
+
+  position: relative;
+}
+main .section3.service .desc p {
+  font-size: var(--subtitle-font-size);
+  color: var(--black-40);
+  margin-bottom: var(--text-margin);
+  margin-top: var(--article-margin);
+}
+main .section3.service .desc h2 {
+  font-size: 21px;
+  font-weight: bold;
 }
