@@ -14,10 +14,14 @@
 
   /* text */
   --main-banner-font-size: 32px;
+  --main-banner-font-size-m: 26px;
   --main-banner-subtitle-font-size: 24px;
+  --main-banner-subtitle-font-size-m: 20px;
   --banner-font-size: 21px;
   --title-font-size: 24px;
+  --title-font-size-m: 21px;
   --subtitle-font-size: 16px;
+  --subtitle-font-size-m: 14px;
   --cta-btn-font-size: 14px;
   --card-title-font-size: 14px;
   --card-content-font-size: 12px;
@@ -40,6 +44,7 @@
   --vertical-card-padding: 12px 12px 16px;
   --horizontal-card-padding: 12px;
   --footer-padding: 27px 0 37px;
+  --footer-padding-m: 24px 28px;
 
   --section-margin: 60px auto;
   --article-margin: 24px;

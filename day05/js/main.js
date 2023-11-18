@@ -8,6 +8,7 @@ intern.forEach((card) => {
   const a = document.createElement("a");
   const article = document.createElement("article");
   const imgWrap = document.createElement("div");
+  const img = document.createElement("img");
   const desc = document.createElement("div");
   const tag = document.createElement("div");
   const dDay = document.createElement("span");
@@ -15,6 +16,7 @@ intern.forEach((card) => {
   const title = document.createElement("h4");
 
   a.href = "#";
+  img.src = card["img"];
   article.classList.add("hire");
   article.classList.add("box-shadow");
   imgWrap.classList.add("img-wrap");
@@ -24,7 +26,7 @@ intern.forEach((card) => {
   job.classList.add("job");
   title.classList.add("ellipsis-line-2");
 
-  imgWrap.style.backgroundImage = "url('" + card["img"] + "')";
+  imgWrap.append(img);
   dDay.append(card["dDay"]);
   job.append(card["job"]);
   title.append(card["title"]);
