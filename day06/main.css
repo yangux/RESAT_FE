@@ -1,0 +1,93 @@
+/* COMMON */
+* {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style: none;
+}
+img {
+  display: block;
+}
+
+/* BUTTON */
+button {
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  z-index: 10;
+}
+.prev {
+  left: 15px;
+}
+.next {
+  right: 15px;
+}
+.prev::before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 2px;
+  background-color: #ddd;
+  transform: translate(10px, -2px) rotate(-45deg);
+}
+.prev::after {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 2px;
+  background-color: #ddd;
+  transform: translate(10px, 2px) rotate(45deg);
+}
+.next::before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 2px;
+  background-color: #ddd;
+  transform: translate(10px, -2px) rotate(45deg);
+}
+.next::after {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 2px;
+  background-color: #ddd;
+  transform: translate(10px, 2px) rotate(-45deg);
+}
+
+/* CAROUSEL */
+.container {
+  width: 800px;
+  height: 600px;
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.carousel-container {
+  width: 40000px;
+  height: 100%;
+}
+
+.carousel-container li {
+  width: 800px;
+  height: 100%;
+  float: left;
+}
+
+.carousel-container li img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
