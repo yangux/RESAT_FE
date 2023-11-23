@@ -17,6 +17,7 @@ a {
   transition: 0.5s;
 }
 .modal {
+  display: none;
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
@@ -24,7 +25,11 @@ a {
   position: fixed;
   top: 0;
   left: 0;
-  /* z-index: 200; */
+
+  transition: 0.5s;
+}
+.modal.visible {
+  display: block;
 }
 
 /* PC */
@@ -95,6 +100,7 @@ a {
 
   .gnb .menuBtn {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
@@ -103,21 +109,23 @@ a {
     width: 20px;
     height: 2px;
     background-color: black;
+
+    transform-origin: center;
+    transition: 0.2s ease-in;
   }
-  .gnb .menuBtn span::before {
-    content: "";
-    display: block;
-    width: 20px;
-    height: 2px;
-    background-color: black;
-    margin-top: -6px;
+  .gnb .menuBtn span.hide {
+    display: none;
   }
-  .gnb .menuBtn span::after {
-    content: "";
-    display: block;
-    width: 20px;
-    height: 2px;
-    background-color: black;
-    margin-top: 10px;
+  .gnb .menuBtn span:first-child {
+    transform: translateY(-5px);
+  }
+  .gnb .menuBtn span:last-child {
+    transform: translateY(5px);
+  }
+  .gnb .menuBtn span.exitBarFirst {
+    transform: translateY(1px) rotate(45deg);
+  }
+  .gnb .menuBtn span.exitBarLast {
+    transform: translateY(-1px) rotate(-45deg);
   }
 }
