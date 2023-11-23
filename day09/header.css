@@ -28,9 +28,6 @@ a {
 
   transition: 0.5s;
 }
-.modal.visible {
-  display: block;
-}
 
 /* PC */
 .gnb {
@@ -80,6 +77,10 @@ a {
 }
 
 @media (max-width: 800px) {
+  .modal.visible {
+    display: block;
+  }
+
   .gnb ul {
     display: block;
     position: fixed;
