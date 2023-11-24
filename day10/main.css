@@ -54,3 +54,33 @@ button {
   color: #333;
   margin-top: 12px;
 }
+
+/* TOAST */
+.toast {
+  width: 220px;
+  height: 80px;
+  background-color: #375bff;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -120px);
+  transition: 0.3s;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  visibility: hidden;
+}
+.toast.visible {
+  visibility: visible;
+  transform: translate(-50%, 10px);
+}
+
+.toast p {
+  color: white;
+  text-align: center;
+}
