@@ -1,12 +1,37 @@
+import { generateMemo, toggleMemo, getMemo, addMemo } from "./memo.js";
+
 let year = new Date().getFullYear();
 let month = new Date().getMonth() + 1;
 
-const container = document.querySelector(".container");
 const displayDate = document.querySelector("#displayDate");
 const displayDateSpan = displayDate.querySelector("span");
 const prevBtn = displayDate.querySelector(".prevBtn");
 const nextBtn = displayDate.querySelector(".nextBtn");
 const calendar = document.querySelector("#calendar");
+
+async function init() {
+  displayDateSpan.innerHTML = `${year}년 ${month}월`;
+  generateCalendar(year, month);
+  generateMemo();
+
+  let prevDate;
+  let selectedDay;
+
+  const dates = await calendar.querySelectorAll("td");
+  const memoDate = document.querySelector(".memoDate");
+
+  for (const date of dates) {
+    date.addEventListener("click", function () {
+      selectedDay = Number(date.innerText);
+
+      changeDate(year, month, selectedDay);
+
+      if (!prevDate || prevDate === selectedDay) toggleMemo();
+      prevDate = selectedDay;
+    });
+  }
+}
+init();
 
 function generateCalendar(year, month) {
   const firstDay = new Date(year, month - 1, 1);
@@ -23,34 +48,6 @@ function generateCalendar(year, month) {
         cell.innerHTML = "";
       } else {
         cell.innerHTML = dayCount;
-
-        const textareaContainer = document.createElement("div");
-        const textArea = document.createElement("textarea");
-        const memoDate = document.createElement("span");
-
-        textareaContainer.id = `${year}-${month}-${dayCount}`;
-        textareaContainer.classList.add("textareaContainer");
-        textareaContainer.classList.add("hide");
-        textArea.placeholder = "메모를 입력할 수 있습니다.";
-
-        memoDate.append(`${year}년 ${month}월 ${dayCount}일`);
-
-        textareaContainer.append(memoDate, textArea);
-        container.append(textareaContainer);
-
-        cell.addEventListener("click", function () {
-          const textareaContainers =
-            document.querySelectorAll(".textareaContainer");
-          Array.from(textareaContainers).forEach((textareaContainer) => {
-            textareaContainer.classList.add("hide");
-          });
-
-          let dayCheck = `${year}-${month}-${this.innerText}`;
-          if (dayCheck === textareaContainer.id) {
-            textareaContainer.classList.toggle("hide");
-          }
-        });
-
         dayCount++;
       }
 
@@ -69,6 +66,14 @@ function clearCalendar() {
   });
 }
 
+function changeDate(year, month, day) {
+  const textareaContainer = document.querySelector(".textareaContainer");
+  const memoDate = textareaContainer.querySelector(".memoDate");
+
+  memoDate.innerText = `${year}년 ${month}월 ${day}일`;
+  getMemo(year, month, day);
+}
+
 prevBtn.addEventListener("click", function () {
   month--;
 
@@ -78,6 +83,7 @@ prevBtn.addEventListener("click", function () {
   }
   clearCalendar();
   init();
+  toggleMemo();
 });
 
 nextBtn.addEventListener("click", function () {
@@ -89,10 +95,5 @@ nextBtn.addEventListener("click", function () {
   }
   clearCalendar();
   init();
+  toggleMemo();
 });
-
-function init() {
-  generateCalendar(year, month);
-  displayDateSpan.innerHTML = `${year}년 ${month}월`;
-}
-init();
