@@ -10,7 +10,7 @@ function generateMemo() {
   const ul = document.createElement("ul");
 
   textareaContainer.classList.add("textareaContainer");
-  //   textareaContainer.classList.add("hide");
+  textareaContainer.classList.add("hide");
   memoDate.classList.add("memoDate");
   textArea.placeholder = "메모를 입력할 수 있습니다.";
   submitBtn.innerText = "+";

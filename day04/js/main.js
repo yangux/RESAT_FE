@@ -14,7 +14,18 @@ async function init() {
   displayDateSpan.innerHTML = `${year}년 ${month}월`;
   generateCalendar(year, month);
   generateMemo();
+
+  let prevDate;
   selectedDay = selectDate();
+
+  const dates = await calendar.querySelectorAll("td");
+
+  for (const date of dates) {
+    date.addEventListener("click", function () {
+      if (!prevDate || prevDate === selectedDay) toggleMemo();
+      prevDate = selectedDay;
+    });
+  }
 
   const textarea = document.querySelector(".textareaContainer textarea");
   const submitBtn = document.querySelector(".submitBtn");
