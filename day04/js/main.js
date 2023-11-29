@@ -2,6 +2,7 @@ import { generateMemo, toggleMemo, getMemo, addMemo } from "./memo.js";
 
 let year = new Date().getFullYear();
 let month = new Date().getMonth() + 1;
+let selectedDay;
 
 const displayDate = document.querySelector("#displayDate");
 const displayDateSpan = displayDate.querySelector("span");
@@ -13,12 +14,21 @@ async function init() {
   displayDateSpan.innerHTML = `${year}년 ${month}월`;
   generateCalendar(year, month);
   generateMemo();
+  selectedDay = selectDate();
 
-  let prevDate;
-  let selectedDay;
+  const textarea = document.querySelector(".textareaContainer textarea");
+  const submitBtn = document.querySelector(".submitBtn");
 
+  submitBtn.addEventListener("click", () => {
+    addMemo(year, month, selectedDay);
+    getMemo(year, month, selectedDay);
+    textarea.value = "";
+  });
+}
+init();
+
+async function selectDate() {
   const dates = await calendar.querySelectorAll("td");
-  const memoDate = document.querySelector(".memoDate");
 
   for (const date of dates) {
     date.addEventListener("click", function () {
@@ -26,12 +36,10 @@ async function init() {
 
       changeDate(year, month, selectedDay);
 
-      if (!prevDate || prevDate === selectedDay) toggleMemo();
-      prevDate = selectedDay;
+      return selectedDay;
     });
   }
 }
-init();
 
 function generateCalendar(year, month) {
   const firstDay = new Date(year, month - 1, 1);
