@@ -59,6 +59,26 @@ ul {
   cursor: pointer;
 }
 
+#calendar tr td.hasMemo {
+  position: relative;
+  color: white;
+}
+
+#calendar tr td.hasMemo::before {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 30px;
+  background-color: #2552e7;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -54%);
+  z-index: -1;
+}
+
 /* MEMO */
 .textareaContainer {
   width: 560px;

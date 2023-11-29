@@ -19,10 +19,15 @@ async function init() {
   selectedDay = selectDate();
 
   const dates = await calendar.querySelectorAll("td");
+  const textareaContainer = document.querySelector(".textareaContainer");
 
   for (const date of dates) {
     date.addEventListener("click", function () {
-      if (!prevDate || prevDate === selectedDay) toggleMemo();
+      if (
+        textareaContainer.classList.contains("hide") ||
+        prevDate === selectedDay
+      )
+        toggleMemo();
       prevDate = selectedDay;
     });
   }
@@ -31,9 +36,17 @@ async function init() {
   const submitBtn = document.querySelector(".submitBtn");
 
   submitBtn.addEventListener("click", () => {
+    updateCalendar(year, month, selectedDay);
     addMemo(year, month, selectedDay);
     getMemo(year, month, selectedDay);
     textarea.value = "";
+    textarea.blur();
+  });
+
+  textarea.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      submitBtn.click();
+    }
   });
 }
 init();
@@ -67,6 +80,7 @@ function generateCalendar(year, month) {
         cell.innerHTML = "";
       } else {
         cell.innerHTML = dayCount;
+        cell.id = `${year}-${month}-${dayCount}`;
         dayCount++;
       }
 
@@ -91,6 +105,13 @@ function changeDate(year, month, day) {
 
   memoDate.innerText = `${year}년 ${month}월 ${day}일`;
   getMemo(year, month, day);
+}
+
+function updateCalendar(year, month, day) {
+  const dayId = `${year}-${month}-${day}`;
+  const td = document.getElementById(dayId);
+
+  td.classList.add("hasMemo");
 }
 
 prevBtn.addEventListener("click", function () {
